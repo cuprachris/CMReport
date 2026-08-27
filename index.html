@@ -135,13 +135,8 @@ async function cmDoLogin(){
     window.CM_SUPABASE_READY=true;
     // The React app can initialize before this module finishes its async login.
     // Reload once after loading the shared state so the app starts from Supabase data.
-    if(!sessionStorage.getItem('cm_shared_bootstrap_done')){
-      sessionStorage.setItem('cm_shared_bootstrap_done','1');
-      location.reload();
-      return;
-    }
-    sessionStorage.removeItem('cm_shared_bootstrap_done');
-    cmHideAuth();
+   location.reload();
+return;
   }catch(err){
     status.textContent=err.message || 'Anmeldung fehlgeschlagen.';
     btn.disabled=false;
