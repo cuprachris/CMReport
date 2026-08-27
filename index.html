@@ -8,7 +8,7 @@
          The tag below is a development-mode hint; the plugin strips and
          re-injects the canonical policy on every build regardless. -->
     
-    <title>CM Report Tool</title>
+    <title>CM Report</title>
     <script>
       window.addEventListener('message', function (e) {
         // Origin check is not viable — the iframe's origin is opaque "null"
@@ -51,7 +51,7 @@ function cmLoginStyles(){
     #cm-auth-login:disabled{opacity:.6;cursor:wait}
     #cm-auth-status{min-height:20px;margin-top:12px;color:#ffb4b4;font-size:13px}
     #cm-auth-user{position:fixed;right:16px;top:16px;z-index:999998;display:none;align-items:center;gap:8px;padding:8px 10px;border:1px solid rgba(0,170,255,.28);border-radius:999px;background:rgba(5,18,34,.78);color:#dceaff;font:12px system-ui,sans-serif;backdrop-filter:blur(8px)}
-    #cm-auth-logout{border:0;border-radius:7px;padding:5px 8px;background:#17283d;color:#fff;cursor:pointer}
+    #cm-auth-logout{border:1px solid rgba(255,90,90,.35);border-radius:8px;padding:6px 10px;background:rgba(120,25,35,.55);color:#fff;cursor:pointer;font-weight:700;transition:all .2s}#cm-auth-logout:hover{background:rgba(170,35,50,.8);transform:translateY(-1px)}
     @media(max-width:600px){#cm-auth-card{padding:24px}#cm-auth-card h1{font-size:24px}}
   `;
   document.head.appendChild(st);
@@ -698,7 +698,7 @@ body:after{background:linear-gradient(115deg,transparent 25%,rgba(53,130,255,.03
     if(!document.body || document.getElementById('cm-auth-user')) return;
     const el=document.createElement('div'); el.id='cm-auth-user';
     const email=(window.CM_AUTH_USER&&window.CM_AUTH_USER.email)||'';
-    el.innerHTML='<span>'+String(email).replace(/[<>&"']/g,'')+'</span><button id="cm-auth-logout" type="button">Abmelden</button>';
+    el.innerHTML='<span>'+String(email).replace(/[<>&"']/g,'')+'</span><button id="cm-auth-logout" type="button">🚪 Abmelden</button>';
     document.body.appendChild(el);
     document.getElementById('cm-auth-logout').onclick=()=>{
       localStorage.removeItem('cm_access_token');localStorage.removeItem('cm_refresh_token');
