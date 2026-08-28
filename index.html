@@ -691,17 +691,44 @@ body:after{background:linear-gradient(115deg,transparent 25%,rgba(53,130,255,.03
 (function(){
   const add=()=>{
     if(!document.body || document.getElementById('cm-auth-user')) return;
-    const el=document.createElement('div'); el.id='cm-auth-user';
-    const email=(window.CM_AUTH_USER&&window.CM_AUTH_USER.email)||'';
-    el.innerHTML='<span>'+String(email).replace(/[<>&"']/g,'')+'</span><button id="cm-auth-logout" type="button">🚪 Abmelden</button>';
-    document.body.appendChild(el);
-    document.getElementById('cm-auth-logout').onclick=()=>{
-      localStorage.removeItem('cm_access_token');localStorage.removeItem('cm_refresh_token');
-      location.reload();
-    };
-    el.style.cssText='display:flex;align-items:center;gap:10px;position:fixed!important;top:20px!important;right:20px!important;z-index:999999!important;';
-const btn=document.getElementById('cm-auth-logout');
-btn.style.cssText='display:block !important;visibility:visible !important;opacity:1 !important;padding:8px 14px;border-radius:8px;border:1px solid rgba(255,255,255,.2);cursor:pointer;font-size:14px;';
+  const el=document.createElement('div');
+el.id='cm-auth-user';
+
+const email=(window.CM_AUTH_USER&&window.CM_AUTH_USER.email)||'';
+el.innerHTML=`<span>${String(email).replace(/[<>]/g,'')}</span>`;
+
+document.body.appendChild(el);
+
+const btn=document.createElement('button');
+btn.id='cm-auth-logout';
+btn.type='button';
+btn.innerHTML='🚪 Abmelden';
+
+btn.onclick=()=>{
+  localStorage.removeItem('cm_access_token');
+  localStorage.removeItem('cm_refresh_token');
+  location.reload();
+};
+
+btn.style.setProperty('position','fixed','important');
+btn.style.setProperty('top','20px','important');
+btn.style.setProperty('right','20px','important');
+btn.style.setProperty('z-index','9999999','important');
+btn.style.setProperty('display','block','important');
+btn.style.setProperty('visibility','visible','important');
+btn.style.setProperty('opacity','1','important');
+btn.style.setProperty('padding','12px 16px','important');
+btn.style.setProperty('border-radius','10px','important');
+btn.style.setProperty('border','1px solid rgba(155,48,255,.45)','important');
+btn.style.setProperty('background','rgba(50,15,80,.65)','important');
+btn.style.setProperty('color','#fff','important');
+btn.style.setProperty('cursor','pointer','important');
+btn.style.setProperty('font-size','14px','important');
+btn.style.setProperty('font-weight','600','important');
+btn.style.setProperty('box-shadow','0 4px 14px rgba(0,0,0,.25)','important');
+btn.style.setProperty('backdrop-filter','blur(8px)','important');
+
+document.body.appendChild(btn);
   };
   setTimeout(add,1200);
 })();
