@@ -171,7 +171,8 @@ async function cmFetch(path, options={}){
     res=await fetch(window.CM_SUPABASE_URL+path,{...options,headers:{'apikey':window.CM_SUPABASE_KEY,'Authorization':'Bearer '+cmToken(),'Content-Type':'application/json',...(options.headers||{})}});
   }
   if(!res.ok) throw new Error(await res.text());
-  return res.status===204?null:res.json();
+const text=await res.text();
+return text?JSON.parse(text):null;
 }
 
 async function cmLoadSharedState(){
