@@ -710,7 +710,7 @@ btn.onclick=()=>{
   location.reload();
 };
 
-btn.style.setProperty('position','fixed','important');
+btn.style.setProperty('position','absolute','important');
 btn.style.setProperty('top','20px','important');
 btn.style.setProperty('right','20px','important');
 btn.style.setProperty('z-index','9999999','important');
@@ -729,6 +729,12 @@ btn.style.setProperty('box-shadow','0 4px 14px rgba(0,0,0,.25)','important');
 btn.style.setProperty('backdrop-filter','blur(8px)','important');
 
 document.body.appendChild(btn);
+    const pinLogout=()=>{
+  btn.style.setProperty('top',(window.scrollY+20)+'px','important');
+};
+
+pinLogout();
+window.addEventListener('scroll',pinLogout,{passive:true});
   };
   setTimeout(add,1200);
 })();
