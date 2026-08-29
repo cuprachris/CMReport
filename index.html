@@ -712,7 +712,10 @@ btn.onclick=()=>{
 };
 
 btn.style.cssText='padding:12px 16px;border-radius:10px;border:1px solid rgba(155,48,255,.45);background:rgba(50,15,80,.65);color:#fff;cursor:pointer;font-size:14px;font-weight:600;backdrop-filter:blur(8px);';
-document.querySelector('header').appendChild(btn);
+
+const header=document.querySelector('header');
+const darkBtn=header.querySelector('button');
+darkBtn ? header.insertBefore(btn,darkBtn.nextSibling) : header.appendChild(btn);
 
   };
   setTimeout(add,1200);
