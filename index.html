@@ -711,25 +711,8 @@ btn.onclick=()=>{
   location.reload();
 };
 
-btn.style.setProperty('position','fixed','important');
-btn.style.setProperty('top','20px','important');
-btn.style.setProperty('right','90px','important');
-btn.style.setProperty('z-index','9999999','important');
-btn.style.setProperty('display','block','important');
-btn.style.setProperty('visibility','visible','important');
-btn.style.setProperty('opacity','1','important');
-btn.style.setProperty('padding','12px 16px','important');
-btn.style.setProperty('border-radius','10px','important');
-btn.style.setProperty('border','1px solid rgba(155,48,255,.45)','important');
-btn.style.setProperty('background','rgba(50,15,80,.65)','important');
-btn.style.setProperty('color','#fff','important');
-btn.style.setProperty('cursor','pointer','important');
-btn.style.setProperty('font-size','14px','important');
-btn.style.setProperty('font-weight','600','important');
-btn.style.setProperty('box-shadow','0 4px 14px rgba(0,0,0,.25)','important');
-btn.style.setProperty('backdrop-filter','blur(8px)','important');
-
-document.documentElement.appendChild(btn);
+btn.style.cssText='padding:12px 16px;border-radius:10px;border:1px solid rgba(155,48,255,.45);background:rgba(50,15,80,.65);color:#fff;cursor:pointer;font-size:14px;font-weight:600;backdrop-filter:blur(8px);';
+document.querySelector('header').appendChild(btn);
 
   };
   setTimeout(add,1200);
